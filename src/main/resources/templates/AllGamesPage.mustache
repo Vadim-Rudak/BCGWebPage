@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head style="padding-top: 0">
+
+    <meta charset="UTF-8">
+    <title>BearsComGames</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="apple-touch-icon" href="images/miniLogo180x180.svg" sizes="180x180">
+    <link rel="icon" href="images/miniLogo32x32.svg" sizes="32x32" type="image/png">
+    <link rel="icon" href="images/miniLogo16x16.svg" sizes="16x16" type="image/png">
+    <link rel="mask-icon" href="images/miniLogo180x180.svg">
+    <link rel="icon" href="images/miniLogo180x180.svg">
+
+
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/checkout/">
+
+    <link href="https://getbootstrap.com/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <link type="text/css" href="css/allGamesPage.css" rel="stylesheet" />
+
+
+
+    <div class="toolbar">
+        <div class="img_logo_toolbar">
+            <a href="/" style="width: 100%; height: 100%"><img src="images/logo_web.svg" height="38px" width="113px" /></a>
+        </div>
+
+        <div class="btn_right">
+            <div class="btn_lang1">
+                <a class="bl1" href=""><p>RU</p></a>
+            </div>
+            <div class="btn_lang2">
+                <a class="bl2" href=""><p>EN</p></a>
+            </div>
+            <div class="mob_menu">
+                <img class="img_menu" src="images/img_mob_menu.svg" height="20px" width="26px" />
+            </div>
+        </div>
+    </div>
+
+</head>
+<body>
+
+<div class="all_games_first_block">наши игры</div>
+
+<div class="itemtext">
+    <ul style=" list-style-type: none; padding-left: 0" >
+        {{#ListGames}}
+                <li>
+                    <div class="block_game">
+                        {{#imgbg}}<img class="bg_game" src="data:image/jpg;base64,{{imgbg}}" height="100%" width="100%" style="object-fit: cover" />{{/imgbg}}
+                        <div class="img_gradient"></div>
+                        <div class="text">
+                            {{#namegame}}<div class="name_game">{{namegame}}</div>{{/namegame}}
+                            <div class="cont_versions">
+                                {{#genre}}<div class="genre_background"><div class="text_genre">{{genre}}</div></div>{{/genre}}
+                                {{#useinapple}}<div class="game_in_apple"><img src="images/img1.svg" width="100%" ></div>{{/useinapple}}
+                                {{#useinandroid}}<div class="game_in_android"><img src="images/img2.svg" width="100%" ></div>{{/useinandroid}}
+                                {{#useinwindows}}<div class="game_in_windows"><img src="images/img3.svg" width="100%" ></div>{{/useinwindows}}
+                                {{#useinwebgl}}<div class="game_in_webGL"><img src="images/img4.svg" width="100%" ></div>{{/useinwebgl}}
+                            </div>
+                            {{#moreinfo}}<div class="impot_info_game">{{moreinfo}}</div>{{/moreinfo}}
+                            <div class="btn_more_info_game">
+                                <a href="/game?id_game={{gameid}}&lang={{language}}" style="width: 100%;height: 100%;text-decoration: none"><div class="text_btn">Подробнее об игре</div></a>
+                            </div>
+                        </div>
+                        <div class="img">
+                            <div class="div_img">
+                                {{#img}}<img src="data:image/jpg;base64,{{img}}" height="100%" width="100%" style="object-fit: cover;border-radius: 40px" />{{/img}}
+                            </div>
+                        </div>
+                    </div>
+                </li>
+        {{/ListGames}}
+    </ul>
+</div>
+
+
+
+
+<div class="block_nine">
+    <div class="_9_block">
+        <div class="text_in_block9">BearsComGames, 2023</div>
+    </div>
+    <div class="_9_block1">
+        <div class="item_site1">
+            <a href="https://vk.com/bearscomgames"></a>
+        </div>
+        <div class="item_site2">
+            <a href="https://www.youtube.com/channel/UCFKlEqnP0rO2Navu6SCQTQw/featured"></a>
+        </div>
+        <div class="item_site3">
+            <a href="https://play.google.com/store/apps/dev?id=7121399721854375389"></a>
+        </div>
+        <div class="item_site5">
+            <a href="https://www.facebook.com/groups/bearscomgames"></a>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

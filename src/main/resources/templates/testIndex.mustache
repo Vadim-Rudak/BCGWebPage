@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>LifeGame</title>
+        <style type="text/css">
+            html, body {
+				background: #c7b39b url(Images/pattern_corgi.png);
+				background-size: 30%;
+							 
+							
+            }
+            #loading {
+				position: absolute;
+                width: 90%;
+                height: 90%;
+				left: 5%;
+				top: 5%;
+				text-align:  center;
+                font-size: 40px;
+				font: bold 3em Arial, sans-serif;
+				color: #f0f0f0; /* Цвет текста, совпадает с цветом фона */
+				text-shadow: #fff -1px -1px 0, 
+                 #333 1px 1px 0;
+                z-index: 10;
+                display: flex;
+				align-items: flex-end;
+				justify-content: center;
+            }
+			.block {
+				position: absolute;
+				
+
+				width: 450px;
+				height: 100%;
+
+				top: 50%;
+				left: 50%;
+				margin-right: -50%;
+				transform: translate(-50%, -50%);
+				z-index: 1;
+				
+
+
+			}
+			.blockIMG {
+				position: absolute;
+				
+
+				width: 450px;
+				height: 100%;
+
+				top: 50%;
+				left: 50%;
+				margin-right: -50%;
+				transform: translate(-50%, -50%);
+				z-index: 0
+			}
+        </style>
+    </head>
+    <body>
+        <canvas class=block id="unity-canvas"></canvas>
+        <div id="loading"><span id="loading-text"></span></div>
+        <script src="Build/TestAds.loader.js"></script>
+        <script src="Build/instant-games-bridge.js"></script>
+		<img class=blockIMG id="loading-canvas" src="Images/loading_screen.png" align=”middle”>
+        <script>
+            if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+                // Mobile device style: fill the whole browser client area with the game canvas:
+                var meta = document.createElement('meta')
+                meta.name = 'viewport'
+                meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes'
+                document.getElementsByTagName('head')[0].appendChild(meta)
+            }
+
+            let canvas = document.getElementById('unity-canvas')
+			let loadingCanvas = document.getElementById('loading-canvas')
+            let loading = document.getElementById('loading')
+            let loadingText = document.getElementById('loading-text')
+
+            const STORAGE_DATA_SEPARATOR = '{bridge_data_separator}'
+            const STORAGE_KEYS_SEPARATOR = '{bridge_keys_separator}'
+            const STORAGE_VALUES_SEPARATOR = '{bridge_values_separator}'
+
+			const wd = (window.innerHeight/20)*9;
+			
+			canvas.style.width  = Math.ceil(wd)+"px";
+			canvas.style.height = '100%';
+			
+			loadingCanvas.style.width  = Math.ceil(wd)+"px";
+			loadingCanvas.style.height = '100%';
+			
+			window.addEventListener('resize',function(){
+				
+				const wd = (window.innerHeight/20)*9;
+			
+				canvas.style.width  = Math.ceil(wd)+"px";
+				canvas.style.height = '100%';
+				
+				loadingCanvas.style.width  = Math.ceil(wd)+"px";
+				loadingCanvas.style.height = '100%';
+			});
+			
+			
+            window.initialize = function() {
+                bridge
+                    .initialize()
+                    .then(() => {
+                        bridge.advertisement.on(
+                            'interstitial_state_changed', 
+                            state => { unityInstance.SendMessage('Bridge', 'OnInterstitialStateChanged', state) })
+
+                        bridge.advertisement.on(
+                            'rewarded_state_changed', 
+                            state => { unityInstance.SendMessage('Bridge', 'OnRewardedStateChanged', state) })
+
+                        bridge.game.on(
+                            'visibility_state_changed', 
+                            state => { unityInstance.SendMessage('Bridge', 'OnVisibilityStateChanged', state) })
+
+                        unityInstance.SendMessage('Bridge', 'OnInitializationCompleted', 'true')
+                    })
+                    .catch(error => {
+                        unityInstance.SendMessage('Bridge', 'OnInitializationCompleted', 'false')
+                    })
+            }
+
+            window.getPlatformId = function() {
+                return bridge.platform.id
+            }
+
+            window.getPlatformLanguage = function() {
+                return bridge.platform.language
+            }
+
+            window.getPlatformPayload = function() {
+                let payload = bridge.platform.payload
+                if (typeof payload === 'string') {
+                    return payload
+                } else {
+                    return ''
+                }
+            }
+
+
+            // device
+            window.getDeviceType = function() {
+                return bridge.device.type
+            }
+
+
+            // player
+            window.getIsPlayerAuthorizationSupported = function() {
+                return bridge.player.isAuthorizationSupported.toString()
+            }
+
+            window.getIsPlayerAuthorized = function() {
+                return bridge.player.isAuthorized.toString()
+            }
+
+            window.getPlayerId = function() {
+                if (bridge.player.id) {
+                    return bridge.player.id.toString()
+                }
+
+                return ''
+            }
+
+            window.getPlayerName = function() {
+                if (bridge.player.name) {
+                    return bridge.player.name.toString()
+                }
+
+                return ''
+            }
+
+            window.getPlayerPhotos = function() {
+                if (bridge.player.photos.length > 0) {
+                    return JSON.stringify(bridge.player.photos)
+                }
+
+                return ''
+            }
+
+            window.authorizePlayer = function(options) {
+                bridge.player.authorize(JSON.parse(options))
+                    .then(() => {
+                        unityInstance.SendMessage('Bridge', 'OnAuthorizeCompleted', 'true')
+                    })
+                    .catch(error => {
+                        unityInstance.SendMessage('Bridge', 'OnAuthorizeCompleted', 'false')
+                    })
+            }
+
+
+            // game
+            window.getVisibilityState = function() {
+                return bridge.game.visibilityState
+            }
+
+
+            // storage
+            window.getStorageDefaultType = function() {
+                return bridge.storage.defaultType
+            }
+
+            window.getIsStorageSupported = function(storageType) {
+                return bridge.storage.isSupported(storageType).toString()
+            }
+
+            window.getStorageData = function(key, storageType) {
+                let keys = key.split(STORAGE_KEYS_SEPARATOR)
+
+                bridge.storage.get(keys, storageType)
+                    .then(data => {
+                        if (keys.length > 1) {
+                            let values = []
+
+                            for (let i = 0; i < keys.length; i++) {
+                                let value = data[i]
+                                if (value) {
+                                    if (typeof value !== 'string') {
+                                        value = JSON.stringify(value)
+                                    }
+
+                                    values.push(value)
+                                } else {
+                                    values.push('')
+                                }
+                            }
+
+                            unityInstance.SendMessage('Bridge', 'OnGetStorageDataSuccess', `${key}${STORAGE_DATA_SEPARATOR}${values.join(STORAGE_VALUES_SEPARATOR)}`)
+                        } else {
+                            if (data[0]) {
+                                if (typeof data[0] !== 'string') {
+                                    data = JSON.stringify(data[0])
+                                }
+                            } else {
+                                data = ''
+                            }
+
+                            unityInstance.SendMessage('Bridge', 'OnGetStorageDataSuccess', `${key}${STORAGE_DATA_SEPARATOR}${data}`)
+                        }
+                    })
+                    .catch(error => {
+                        unityInstance.SendMessage('Bridge', 'OnGetStorageDataFailed', key)
+                    })
+            }
+
+            window.setStorageData = function(key, value, storageType) {
+                let keys = key.split(STORAGE_KEYS_SEPARATOR)
+                let values = value.split(STORAGE_VALUES_SEPARATOR)
+
+                bridge.storage.set(keys, values, storageType)
+                    .then(() => {
+                        unityInstance.SendMessage('Bridge', 'OnSetStorageDataSuccess', key)
+                    })
+                    .catch(error => {
+                        unityInstance.SendMessage('Bridge', 'OnSetStorageDataFailed', key)
+                    })
+            }
+
+            window.deleteStorageData = function(key, storageType) {
+                let keys = key.split(STORAGE_KEYS_SEPARATOR)
+
+                bridge.storage.delete(keys, storageType)
+                    .then(() => {
+                        unityInstance.SendMessage('Bridge', 'OnDeleteStorageDataSuccess', key)
+                    })
+                    .catch(error => {
+                        unityInstance.SendMessage('Bridge', 'OnDeleteStorageDataFailed', key)
+                    })
+            }
+
+
+            // advertisement
+            window.getMinimumDelayBetweenInterstitial = function() {
+                return bridge.advertisement.minimumDelayBetweenInterstitial.toString()
+            }
+
+            window.setMinimumDelayBetweenInterstitial = function(options) {
+                bridge.advertisement.setMinimumDelayBetweenInterstitial(JSON.parse(options))
+            }
+
+            window.showInterstitial = function(options) {
+                bridge.advertisement.showInterstitial(JSON.parse(options))
+                    .then(() => {
+                        unityInstance.SendMessage('Bridge', 'OnShowInterstitialCompleted', 'true')
+                    })
+                    .catch(error => {
+                        unityInstance.SendMessage('Bridge', 'OnShowInterstitialCompleted', 'false')
+                    })
+            }
+
+            window.showRewarded = function() {
+                bridge.advertisement.showRewarded()
+                    .then(() => {
+                        unityInstance.SendMessage('Bridge', 'OnShowRewardedCompleted', 'true')
+                    })
+                    .catch(error => {
+                        unityInstance.SendMessage('Bridge', 'OnShowRewardedCompleted', 'false')
+                    })
+            }
+
+
+            // social
+            window.getIsShareSupported = function() {
+                return bridge.social.isShareSupported.toString()
+            }
+
+            window.getIsInviteFriendsSupported = function() {
+                return bridge.social.isInviteFriendsSupported.toString()
+            }
+
+            window.getIsJoinCommunitySupported = function() {
+                return bridge.social.isJoinCommunitySupported.toString()
+            }
+
+            window.getIsCreatePostSupported = function() {
+                return bridge.social.isCreatePostSupported.toString()
+            }
+
+            window.getIsAddToHomeScreenSupported = function() {
+                return bridge.social.isAddToHomeScreenSupported.toString()
+            }
+
+            window.getIsAddToFavoritesSupported = function() {
+                return bridge.social.isAddToFavoritesSupported.toString()
+            }
+
+            window.getIsRateSupported = function() {
+                return bridge.social.isRateSupported.toString()
+            }
+
+            window.share = function(options) {
+                bridge.social.share(JSON.parse(options))
+                    .then(() => {
+                        unityInstance.SendMessage('Bridge', 'OnShareCompleted', 'true')
+                    })
+                    .catch(error => {
+                        unityInstance.SendMessage('Bridge', 'OnShareCompleted', 'false')
+                    })
+            }
+
+            window.inviteFriends = function() {
+                bridge.social.inviteFriends()
+                    .then(() => {
+                        unityInstance.SendMessage('Bridge', 'OnInviteFriendsCompleted', 'true')
+                    })
+                    .catch(error => {
+                        unityInstance.SendMessage('Bridge', 'OnInviteFriendsCompleted', 'false')
+                    })
+            }
+
+            window.joinCommunity = function(options) {
+                bridge.social.joinCommunity(JSON.parse(options))
+                    .then(() => {
+                        unityInstance.SendMessage('Bridge', 'OnJoinCommunityCompleted', 'true')
+                    })
+                    .catch(error => {
+                        unityInstance.SendMessage('Bridge', 'OnJoinCommunityCompleted', 'false')
+                    })
+            }
+
+            window.createPost = function(options) {
+                bridge.social.createPost(JSON.parse(options))
+                    .then(() => {
+                        unityInstance.SendMessage('Bridge', 'OnCreatePostCompleted', 'true')
+                    })
+                    .catch(error => {
+                        unityInstance.SendMessage('Bridge', 'OnCreatePostCompleted', 'false')
+                    })
+            }
+
+            window.addToHomeScreen = function() {
+                bridge.social.addToHomeScreen()
+                    .then(() => {
+                        unityInstance.SendMessage('Bridge', 'OnAddToHomeScreenCompleted', 'true')
+                    })
+                    .catch(error => {
+                        unityInstance.SendMessage('Bridge', 'OnAddToHomeScreenCompleted', 'false')
+                    })
+            }
+
+            window.addToFavorites = function() {
+                bridge.social.addToFavorites()
+                    .then(() => {
+                        unityInstance.SendMessage('Bridge', 'OnAddToFavoritesCompleted', 'true')
+                    })
+                    .catch(error => {
+                        unityInstance.SendMessage('Bridge', 'OnAddToFavoritesCompleted', 'false')
+                    })
+            }
+
+            window.rate = function() {
+                bridge.social.rate()
+                    .then(() => {
+                        unityInstance.SendMessage('Bridge', 'OnRateCompleted', 'true')
+                    })
+                    .catch(error => {
+                        unityInstance.SendMessage('Bridge', 'OnRateCompleted', 'false')
+                    })
+            }
+
+
+            // leaderboard
+            window.getIsLeaderboardSupported = function() {
+                return bridge.leaderboard.isSupported.toString()
+            }
+
+            window.getIsLeaderboardNativePopupSupported = function() {
+                return bridge.leaderboard.isNativePopupSupported.toString()
+            }
+
+            window.getIsLeaderboardMultipleBoardsSupported = function() {
+                return bridge.leaderboard.isMultipleBoardsSupported.toString()
+            }
+
+            window.getIsLeaderboardSetScoreSupported = function() {
+                return bridge.leaderboard.isSetScoreSupported.toString()
+            }
+
+            window.getIsLeaderboardGetScoreSupported = function() {
+                return bridge.leaderboard.isGetScoreSupported.toString()
+            }
+
+            window.getIsLeaderboardGetEntriesSupported = function() {
+                return bridge.leaderboard.isGetEntriesSupported.toString()
+            }
+
+            window.leaderboardSetScore = function(options) {
+                bridge.leaderboard.setScore(JSON.parse(options))
+                    .then(() => {
+                        unityInstance.SendMessage('Bridge', 'OnLeaderboardSetScoreCompleted', 'true')
+                    })
+                    .catch(error => {
+                        unityInstance.SendMessage('Bridge', 'OnLeaderboardSetScoreCompleted', 'false')
+                    })
+            }
+
+            window.leaderboardGetScore = function(options) {
+                bridge.leaderboard.getScore(JSON.parse(options))
+                    .then(data => {
+                        if (data) {
+                            if (typeof data !== 'string') {
+                                data = JSON.stringify(data)
+                            }
+
+                            unityInstance.SendMessage('Bridge', 'OnLeaderboardGetScoreCompleted', data)
+                        } else {
+                            unityInstance.SendMessage('Bridge', 'OnLeaderboardGetScoreCompleted', '')
+                        }
+                    })
+                    .catch(error => {
+                        unityInstance.SendMessage('Bridge', 'OnLeaderboardGetScoreCompleted', 'false')
+                    })
+            }
+
+            window.leaderboardGetEntries = function(options) {
+                bridge.leaderboard.getEntries(JSON.parse(options))
+                    .then(data => {
+                        if (data) {
+                            if (typeof data !== 'string') {
+                                data = JSON.stringify(data)
+                            }
+
+                            unityInstance.SendMessage('Bridge', 'OnLeaderboardGetEntriesCompletedSuccess', data)
+                        } else {
+                            unityInstance.SendMessage('Bridge', 'OnLeaderboardGetEntriesCompletedSuccess', '')
+                        }
+                    })
+                    .catch(error => {
+                        unityInstance.SendMessage('Bridge', 'OnLeaderboardGetEntriesCompletedFailed', 'false')
+                    })
+            }
+
+            window.leaderboardShowNativePopup = function(options) {
+                bridge.leaderboard.showNativePopup(JSON.parse(options))
+                    .then(() => {
+                        unityInstance.SendMessage('Bridge', 'OnLeaderboardShowNativePopupCompleted', 'true')
+                    })
+                    .catch(error => {
+                        unityInstance.SendMessage('Bridge', 'OnLeaderboardShowNativePopupCompleted', 'false')
+                    })
+            }
+
+
+            window.onUnityLoadingProgressChanged = function(progress) {
+                loadingText.innerHTML = Math.ceil(progress * 100) + '%'
+            }
+            
+            createUnityInstance(
+                document.querySelector('#unity-canvas'), 
+                {
+                    dataUrl: 'Build/TestAds.data',
+                    frameworkUrl: 'Build/TestAds.framework.js',
+                    codeUrl: 'Build/TestAds.wasm',
+                    streamingAssetsUrl: 'StreamingAssets',
+                    companyName: 'DefaultCompany',
+                    productName: 'LifeGame',
+                    productVersion: '0.1',
+                    // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+                    // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+                },
+                onUnityLoadingProgressChanged)
+            .then((unityInstance) => {
+                window.unityInstance = unityInstance
+                loading.remove()
+            })
+            .catch((error) => {
+                loadingText.innerHTML = error
+            })
+
+            window.addEventListener('pointerdown', () => {
+                window.focus()
+                canvas.focus()
+            })
+        </script>
+    </body>
+</html>

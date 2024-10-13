@@ -1,0 +1,4 @@
+# Project exclude paths
+/target/
+application.properties
+**/src/main/resources/static/games/**

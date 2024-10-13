@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head style="padding-top: 0">
+
+    <meta charset="UTF-8">
+    <title>BearsComGames</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="apple-touch-icon" href="images/miniLogo180x180.svg" sizes="180x180">
+    <link rel="icon" href="images/miniLogo32x32.svg" sizes="32x32" type="image/png">
+    <link rel="icon" href="images/miniLogo16x16.svg" sizes="16x16" type="image/png">
+    <link rel="mask-icon" href="images/miniLogo180x180.svg">
+    <link rel="icon" href="images/miniLogo180x180.svg">
+
+
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/checkout/">
+
+    <link href="https://getbootstrap.com/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <link type="text/css" href="css/gamePage.css" rel="stylesheet" />
+
+
+
+    <div class="toolbar">
+        <div class="img_logo_toolbar">
+            <a href="/" style="width: 100%; height: 100%"><img src="images/logo_web.svg" height="38px" width="113px" /></a>
+        </div>
+
+        <div class="btn_right">
+            <div class="btn_lang1">
+                <a class="bl1" href=""><p>RU</p></a>
+            </div>
+            <div class="btn_lang2">
+                <a class="bl2" href=""><p>EN</p></a>
+            </div>
+            <div class="mob_menu">
+                <img class="img_menu" src="images/img_mob_menu.svg" height="20px" width="26px" />
+            </div>
+        </div>
+    </div>
+
+</head>
+<body>
+
+<div class="game_first_block">
+    <picture style="text-align:center">
+        <source media="(max-width: 320px)" {{#obj_game.imgbg}} srcset="data:image/png;base64,{{obj_game.imgbg}}"{{/obj_game.imgbg}} style=" object-fit: cover">
+        <source media="(max-width: 768px)" {{#obj_game.imgbg}} srcset="data:image/png;base64,{{obj_game.imgbg}}"{{/obj_game.imgbg}} style=" object-fit: cover">
+        <source media="(max-width: 1440px)" {{#obj_game.imgbg}} srcset="data:image/png;base64,{{obj_game.imgbg}}"{{/obj_game.imgbg}} style=" object-fit: cover">
+        <source media="(max-width: 1920px)" {{#obj_game.imgbg}} srcset="data:image/png;base64,{{obj_game.imgbg}}"{{/obj_game.imgbg}} style=" object-fit: cover">
+        <img class="main_image" {{#obj_game.imgbg}} src="data:image/png;base64,{{obj_game.imgbg}}"{{/obj_game.imgbg}} height="640px" width="100%" style=" object-fit: cover">
+    </picture>
+    <div class="img_gradient"></div>
+    <div class="first_block_info">
+        <div class="block-info1">
+            {{#obj_game.genre}}<div class="bg_genre">
+                <div class="text_genre_in_first_block">{{obj_game.genre}}</div>
+            </div>{{/obj_game.genre}}
+            {{#obj_game.namegame}}<div class="first_block_info_text1">{{obj_game.namegame}}</div>{{/obj_game.namegame}}
+            {{#obj_game.moreinfo1}}<div class="first_block_info_text2">{{obj_game.moreinfo1}}</div>{{/obj_game.moreinfo1}}
+            <div class="btns_game_in_more_platform">
+                {{#obj_game.hrefapple}}<a  href="{{obj_game.hrefapple}}"><div class="btn_apple">
+                    <img class="img_menu" src="images/btn_apple.svg" height="100%" width="100%" />
+                </div></a>{{/obj_game.hrefapple}}
+                {{#obj_game.hrefandroid}}<a href="{{obj_game.hrefandroid}}"><div class="btn_android">
+                    <img class="img_menu" src="images/btn_android.svg" height="100%" width="100%" />
+                </div></a>{{/obj_game.hrefandroid}}
+                {{#obj_game.hrefsteam}}<a href="{{obj_game.hrefsteam}}"><div class="btn_steam">
+                    <img class="img_menu" src="images/btn_steam.svg" height="100%" width="100%" />
+                </div></a>{{/obj_game.hrefsteam}}
+                {{#obj_game.hrefok}}<a href="{{obj_game.hrefok}}"><div class="btn_ok">
+                    <img class="img_menu" src="images/btn_ok.svg" height="100%" width="100%" />
+                </div></a>{{/obj_game.hrefok}}
+                {{#obj_game.hrefvk}}<a href="{{obj_game.hrefvk}}"><div class="btn_vk">
+                    <img class="img_menu" src="images/btn_vk.svg" height="100%" width="100%" />
+                </div></a>{{/obj_game.hrefvk}}
+                {{#obj_game.hrefyn}}<a href="{{obj_game.hrefyn}}"><div class="btn_yn">
+                    <img class="img_menu" src="images/btn_yn.svg" height="100%" width="100%" />
+                </div></a>{{/obj_game.hrefyn}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="block_game_with_video">
+    <div class="block_video">
+        <iframe width="100%" height="100%"
+                {{#obj_game.hrefvideo}}src="{{obj_game.hrefvideo}}"{{/obj_game.hrefvideo}}
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+<!--        <video {{#obj_game.hrefvideo}}src="{{obj_game.hrefvideo}}"{{/obj_game.hrefvideo}}-->
+<!--               width="100%" height="100%" controls>-->
+<!--            The browser does not support videos.-->
+<!--        </video>-->
+    </div>
+    <div class="block_video_info">
+        {{#obj_game.moreinfo2}}<span class="text_video_info">{{obj_game.moreinfo2}}</span>{{/obj_game.moreinfo2}}
+    </div>
+</div>
+
+<div class="itemtext">
+    <ul style=" list-style-type: none; padding-left: 0" >
+        {{#blocks}}
+            {{#useblock1}}
+                <li>
+                    <div class="block_type1">
+                        <div class="block1_in_type1">
+                            <picture style="text-align:center">
+                                <img src="data:image/jpg;base64,{{img1}}" height="66%" width="100%" />
+                            </picture>
+                            <div class="div_titel1"><span class="block1_in_type1_titel1">{{titel1}}</span></div>
+                            <div class="div_info1"><span class="block1_in_type1_info1">{{moreinfo1}}</span></div>
+                        </div>
+                        <div class="block2_in_type1">
+                            <picture style="text-align:center">
+                                <img src="data:image/jpg;base64,{{img2}}" height="66%" width="100%" />
+                            </picture>
+                            <div class="div_titel2"><span class="block2_in_type1_titel1">{{titel2}}</span></div>
+                            <div class="div_info2"><span class="block2_in_type1_info1">{{moreinfo2}}</span></div>
+                        </div>
+                        <div class="block3_in_type1">
+                            <picture style="text-align:center">
+                                <img src="data:image/jpg;base64,{{img3}}" height="66%" width="100%" />
+                            </picture>
+                            <div class="div_titel3"><span class="block3_in_type1_titel1">{{titel3}}</span></div>
+                            <div class="div_info3"><span class="block3_in_type1_info1">{{moreinfo3}}</span></div>
+                        </div>
+                    </div>
+                </li>
+            {{/useblock1}}
+            {{#useblock2}}
+                <li>
+                    <div class="block_type2">
+                        <div class="block_type2_div_img">
+                            <picture style="text-align:center">
+                                <img src="data:image/jpg;base64,{{img1}}" width="100%" />
+                            </picture>
+                        </div>
+                        <div class="block_type2_div_info">
+                            <span class="titel">{{titel1}}</span><br>
+                            <span class="info">{{moreinfo1}}</span>
+                        </div>
+                    </div>
+
+                </li>
+            {{/useblock2}}
+            {{#useblock3}}
+                <li>
+                    <div class="block_type3">
+                        <div class="block_type3_div_info">
+                            <span class="titel">{{titel1}}</span><br>
+                            <span class="info">{{moreinfo1}}</span>
+                        </div>
+                        <div class="block_type3_div_img">
+                            <picture style="text-align:center">
+                                <img src="data:image/jpg;base64,{{img1}}" width="100%" />
+                            </picture>
+                        </div>
+                    </div>
+                </li>
+            {{/useblock3}}
+        {{/blocks}}
+    </ul>
+</div>
+
+<div class="block_nine">
+    <div class="_9_block">
+        <div class="text_in_block9">BearsComGames, 2023</div>
+    </div>
+    <div class="_9_block1">
+        <div class="item_site1">
+            <a href="https://vk.com/bearscomgames"></a>
+        </div>
+        <div class="item_site2">
+            <a href="https://www.youtube.com/channel/UCFKlEqnP0rO2Navu6SCQTQw/featured"></a>
+        </div>
+        <div class="item_site3">
+            <a href="https://play.google.com/store/apps/dev?id=7121399721854375389"></a>
+        </div>
+        <div class="item_site5">
+            <a href="https://www.facebook.com/groups/bearscomgames"></a>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head style="padding-top: 0">
+
+    <meta charset="UTF-8">
+    <title>BearsComGames</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="apple-touch-icon" href="images/miniLogo180x180.svg" sizes="180x180">
+    <link rel="icon" href="images/miniLogo32x32.svg" sizes="32x32" type="image/png">
+    <link rel="icon" href="images/miniLogo16x16.svg" sizes="16x16" type="image/png">
+    <link rel="mask-icon" href="images/miniLogo180x180.svg">
+    <link rel="icon" href="images/miniLogo180x180.svg">
+
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/checkout/">
+    <script src="https://code.jquery.com/jquery-2.0.2.min.js"></script>
+
+
+    <link href="https://getbootstrap.com/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <link type="text/css" href="css/mainPage.css" rel="stylesheet" />
+
+    <script src="scripts/mainPopUp.js"></script>
+    <script src="scripts/mainSmallMenu.js"></script>
+
+
+    <div id="navBar" class="toolbar">
+        <div id="logo_1" class="img_logo_toolbar">
+            <img src="images/logo_web.svg" height="38px" width="113px" />
+        </div>
+        <div class="toolbar_btn">
+            <a class="btn_toolbar" href="#games">games</a>
+            <a class="btn_toolbar" href="#for_as">about us</a>
+            <a class="btn_toolbar" href="#cooperation">cooperation</a>
+            <a class="btn_toolbar" href="#work">vacancies</a>
+        </div>
+
+        <div class="btn_right">
+            <div id="btn_ru" class="btn_lang1">
+                <a class="bl1" href="?lang=ru" onclick="lang()">
+                    <p>RU</p>
+                </a>
+            </div>
+            <div id="btn_en" class="btn_lang2">
+                <a class="bl2" href="?lang=en" onclick="lang()">
+                    <p style="color: #fed106">EN</p>
+                </a>
+                <div id="line_en" style="margin-top:-13px;width: 100%;height: 2px; border: 10px;background: #fed106"></div>
+            </div>
+            <div id="myMenu" class="mob_menu">
+                <a href="javascript:void(0)" onclick="myFunction()"><img id="img_menu" class="img_menu" src="images/img_mob_menu_false.svg" height="20px" width="26px" /></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="small_menu" class="small_menu" style="display: none">
+        <div class="block_menu">
+            <a href="#games" class="item_in_small_menu"><div class="small_menu_item1">
+                <div style="padding-top: 12px;margin-left: 45px"><span>games</span></div>
+            </div></a>
+            <a href="#for_as" class="item_in_small_menu"><div class="small_menu_item2">
+                <div style="padding-top: 12px;margin-left: 45px"><span>about us</span></div>
+            </div></a>
+            <a href="#cooperation" class="item_in_small_menu"><div class="small_menu_item3">
+                <div style="padding-top: 12px;margin-left: 45px"><span>cooperation</span></div>
+            </div></a>
+            <a href="#work" class="item_in_small_menu"><div class="small_menu_item4">
+                <div style="padding-top: 12px;margin-left: 45px"><span>vacancies</span></div>
+            </div></a>
+            <a><div class="small_menu_item5">
+                <div class="small_menu_icons">
+                    <div style="margin-right: 10px;height: 32px;width: 32px">
+                        <a href="https://vk.com/bearscomgames"><div class="btn_site1_in_menu"></div></a>
+                    </div>
+                    <div style="margin-left: 10px; margin-right: 10px">
+                        <a href="https://www.youtube.com/channel/UCFKlEqnP0rO2Navu6SCQTQw/featured"><div class="btn_site2_in_menu"></div></a>
+                    </div>
+                    <div style="margin-left: 10px; margin-right: 10px">
+                        <a href="https://play.google.com/store/apps/dev?id=7121399721854375389"><div class="btn_site3_in_menu"></div></a>
+                    </div>
+                    <div style="margin-left: 10px; margin-right: 10px">
+                        <a href="https://www.facebook.com/groups/bearscomgames"><div class="btn_site4_in_menu"></div></a>
+                    </div>
+                </div>
+            </div></a>
+        </div>
+    </div>
+
+</head>
+<body>
+
+<div class="first_block">
+    <picture style="text-align:center;object-fit: cover">
+        <source media="(max-width: 767px)" srcset="images/main_img_mob.png">
+        <source media="(max-width: 1439px)" srcset="images/main_img_tablet1.png" >
+        <source media="(max-width: 1919px)" srcset="images/main_img_desc2.png">
+        <source media="(min-width: 1920px)" srcset="images/main_img.png">
+        <img class="main_image" src="images/main_img.png" width="100%" style="  object-fit: cover" >
+    </picture>
+    <div class="info_in_first_block">
+        <div class="info_block1">
+            <div style="text-align: center"><span class="text_logo1">BearsCom</span><span class="text_logo2"> Games</span></div>
+            <br>
+            <div style="text-align: center"><span class="blok1_text3">Game development studio from St. Petersburg</span></div>
+        </div>
+    </div>
+</div>
+
+<p><a id="games"></a></p>
+<div class="second_block">
+    <div class="bl_text">
+        <p class="bg_titel">games games games games</p>
+        <div class="div_small_titel"><span class="titel">games</span></div>
+    </div>
+    <div class="div_game1">
+        <picture style="text-align:center">
+            <source media="(max-width: 767px)" srcset="images/img_top_game1_mob.png">
+            <source media="(max-width: 1439px)" srcset="images/img_top_game1_tablet.png">
+            <source media="(max-width: 1919px)" srcset="images/img_top_game1_desc2.png" >
+            <source media="(min-width: 1920px)" srcset="images/img_top_game1.png">
+            <img class="main_image" src="images/img_top_game1.png" width="100%" height="100%" style="  object-fit: cover;border-radius: 24px" >
+        </picture>
+        <div class="div_game1_info1">
+            <div><span class="text1"><b>Binary Corgi</b></span></div>
+            <div class="imp_info_game1" style="margin-top: 8px">
+                <div class="game1_bl1">
+                    <div class="text_game1_bl1">Casual</div>
+                </div>
+                <div class="game1_bl2">
+                    <img src="images/img1.svg" height="22px">
+                </div>
+                <div class="game1_bl3">
+                    <img src="images/img2.svg" height="22px">
+                </div>
+                <div class="game1_bl4">
+                    <img src="images/img4.svg" height="22px">
+                </div>
+            </div>
+            <div class="item_top_game1_other_info"><span class="text2">Corgi personify a young couple who jointly cope with domestic and life difficulties. All difficulties are easier to overcome together and this is what our game is about.</span></div>
+        </div>
+        <div class="div_game1_info2">
+            <div class="btn1_game1">
+                <a href="/game?id_game=1&lang=en" style="width: 100%;height: 100%;text-decoration: none"><div class="text_btn1_game1">More about the game</div></a>
+            </div>
+<!--            <div class="btn2_game1">-->
+<!--                <div class="text_btn2_game1">Level editor</div>-->
+<!--            </div>-->
+        </div>
+    </div>
+</div>
+
+<div class="block_six">
+
+    <div class="_6_block_left">
+        <div style="width: 64px;height: 64px">
+            <!--            <img class="" style="width: 100%;height: 100%" src="images/slid_btn_left_dis.svg" />-->
+        </div>
+    </div>
+
+    <div class="_6_block_right">
+        <div style="height: 64px;width: 64px">
+            <!--           <img class="" style="width: 100%;height: 100%" src="images/img_swipe_right.png" />-->
+        </div>
+    </div>
+    <div class="slider">
+        <div class="slider__wrapper">
+            {{#games_imp_info}}
+                <div class="slider__item" style="position: relative">
+                    <div style="height: 428px; margin-left: 12px;margin-right: 12px">
+                        <img src="data:image/jpg;base64,{{img}}" height="100%" width="100%" style="  object-fit: cover;border-radius: 12px"/>
+                        <div class="background_game_item"></div>
+                        <div class="info_game">
+                            <div class="div_titel"><span class="titel_game">{{namegame}}</span></div>
+                        </div>
+                        <div class="info_game1">
+                            <div class="div_other_info">
+                                <div class="_6_block1">
+                                    <div style="margin-top: 0px;margin-left: 12px;margin-right: 12px"><span class="text_genre">{{genre}}</span></div>
+                                </div>
+                                {{#useinapple}}<div class="_6_block2">
+                                    <img src="images/img1.svg" height="100%" width="100%">
+                                </div>{{/useinapple}}
+                                {{#useinandroid}}<div class="_6_block3">
+                                    <img src="images/img2.svg" height="100%" width="100%">
+                                </div>{{/useinandroid}}
+                                {{#useinwindows}}<div class="_6_block4">
+                                    <img src="images/img3.svg" height="100%" width="100%">
+                                </div>{{/useinwindows}}
+                            </div>
+                        </div>
+                        <div class="info_game2">
+                            <div style="margin-left: 16px;margin-right: 16px"><span class="text_other">{{moreinfo}}</span></div>
+                        </div>
+                        <div class="info_game_btn">
+                            <div class="btn_more_info">
+                                <a href="/game?id_game={{gameid}}&lang=en" style="width: 100%;height: 100%;text-decoration: none"><div class="text_btn">More about the game</div></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/games_imp_info}}
+            <div class="slider__item" style="position: relative">
+                <div class="item_all_games">
+                    <div class="text_info">Even more games</div>
+                    <a href="/allGames?lang=en" style="display:block;text-decoration: none;color: black"><div class="btn_all_games">
+                        <div class="text_in_btn_all_games">See all</div>
+                    </div></a>
+                </div>
+            </div>
+        </div>
+        <a class="slider__control slider__control_left" href="#" role="button"></a>
+        <a class="slider__control slider__control_right slider__control_show" href="#" role="button"></a>
+    </div>
+
+    <script>
+        'use strict';
+
+        var multiItemSlider = (function () {
+            return function (selector) {
+                var
+                        _mainElement = document.querySelector(selector), // основный элемент блока
+                        _sliderWrapper = _mainElement.querySelector('.slider__wrapper'), // обертка для .slider-item
+                        _sliderItems = _mainElement.querySelectorAll('.slider__item'), // элементы (.slider-item)
+                        _sliderControls = _mainElement.querySelectorAll('.slider__control'), // элементы управления
+                        _sliderControlLeft = _mainElement.querySelector('.slider__control_left'), // кнопка "LEFT"
+                        _sliderControlRight = _mainElement.querySelector('.slider__control_right'), // кнопка "RIGHT"
+                        _wrapperWidth = parseFloat(getComputedStyle(_sliderWrapper).width), // ширина обёртки
+                        _itemWidth = parseFloat(getComputedStyle(_sliderItems[0]).width), // ширина одного элемента
+                        _positionLeftItem = 0, // позиция левого активного элемента
+                        _transform = 0, // значение транфсофрмации .slider_wrapper
+                        _step = _itemWidth / _wrapperWidth * 100, // величина шага (для трансформации)
+                        _items = []; // массив элементов
+                // наполнение массива _items
+                _sliderItems.forEach(function (item, index) {
+                    _items.push({ item: item, position: index, transform: 0 });
+                });
+
+                var position = {
+                    getMin: 0,
+                    getMax: _items.length - 1
+                };
+
+                var _transformItem = function (direction) {
+                    if (direction === 'right') {
+                        if ((_positionLeftItem + _wrapperWidth / _itemWidth - 1) >= position.getMax) {
+                            return;
+                        }
+                        if (!_sliderControlLeft.classList.contains('slider__control_show')) {
+                            _sliderControlLeft.classList.add('slider__control_show');
+                        }
+                        if (_sliderControlRight.classList.contains('slider__control_show') && (_positionLeftItem + _wrapperWidth / _itemWidth) >= position.getMax) {
+                            _sliderControlRight.classList.remove('slider__control_show');
+                        }
+                        _positionLeftItem++;
+                        _transform -= _step;
+                    }
+                    if (direction === 'left') {
+                        if (_positionLeftItem <= position.getMin) {
+                            return;
+                        }
+                        if (!_sliderControlRight.classList.contains('slider__control_show')) {
+                            _sliderControlRight.classList.add('slider__control_show');
+                        }
+                        if (_sliderControlLeft.classList.contains('slider__control_show') && _positionLeftItem - 1 <= position.getMin) {
+                            _sliderControlLeft.classList.remove('slider__control_show');
+                        }
+                        _positionLeftItem--;
+                        _transform += _step;
+                    }
+                    _sliderWrapper.style.transform = 'translateX(' + _transform + '%)';
+                };
+
+                // обработчик события click для кнопок "назад" и "вперед"
+                var _controlClick = function (e) {
+                    if (e.target.classList.contains('slider__control')) {
+                        e.preventDefault();
+                        var direction = e.target.classList.contains('slider__control_right') ? 'right' : 'left';
+                        _transformItem(direction);
+                    }
+                };
+
+                var _setUpListeners = function () {
+                    // добавление к кнопкам "назад" и "вперед" обрботчика _controlClick для событя click
+                    _sliderControls.forEach(function (item) {
+                        item.addEventListener('click', _controlClick);
+                    });
+                };
+
+                // инициализация
+                _setUpListeners();
+
+                return {
+                    right: function () { // метод right
+                        _transformItem('right');
+                    },
+                    left: function () { // метод left
+                        _transformItem('left');
+                    }
+                }
+
+            }
+        }());
+
+        var slider = multiItemSlider('.slider')
+    </script>
+
+</div>
+
+<p><a id="for_as"></a></p>
+<div class="third_block">
+    <p class="bg_titel">about us about us about us about us</p>
+    <div class="div_small_titel"><span class="titel">about us</span></div>
+</div>
+
+<div class="block_four">
+    <div class="item1">
+        <picture class="img_item1" style="text-align:center">
+            <source media="(max-width: 767px)" srcset="images/img_item1_mob.png">
+            <source media="(max-width: 1439px)" srcset="images/img_item1_small.png">
+            <source media="(min-width: 1919px)" srcset="images/img_item1.png">
+            <img class="main_image" src="images/img_item1.png" >
+        </picture>
+        <span class="item1_text1">We are a small team of talented<br>specialists.</span>
+        <span class="item1_text2">We love games and we love making them. We are engaged in the creation of games of any genre, from large desktop projects to simple browser or mobile platformers.</span>
+    </div>
+    <div class="item2">
+        <picture class="img_item2" style="text-align:center">
+            <source media="(max-width: 767px)" srcset="images/img_item2_mob.png">
+            <source media="(max-width: 1439px)" srcset="images/img_item2_small.png">
+            <source media="(min-width: 1919px)" srcset="images/img_item2.png">
+            <img class="main_image" src="images/img_item2.png" >
+        </picture>
+        <span class="item2_text1">Our success lies in teamwork</span>
+        <span class="item2_text2">We try to keep the atmosphere of a small company. We organize workflows so that they make life easier and games better. We are constantly looking for ways to devote the team's time exclusively to creativity and creativity.</span>
+    </div>
+</div>
+
+<div class="block_five">
+        <picture class="img_item3" style="text-align:center">
+            <source media="(max-width: 767px)" srcset="images/img_item3_mob.png">
+            <source media="(max-width: 1439px)" srcset="images/img_item3_small.png">
+            <source media="(max-width: 1919px)" srcset="images/img_item3.png">
+            <img class="main_image" src="images/img_item3.png" >
+        </picture>
+        <span class="item3_text1">Each of our projects goes through a full development cycle</span>
+        <span class="item3_text2">Which includes: game design, graphics rendering, writing documentation, animation development, selection of audio materials, production of 3D models, interface design, translation into foreign languages, thinking over monetization.</span>
+</div>
+
+<p><a id="cooperation"></a></p>
+<div class="third_block">
+    <p class="bg_titel">cooperation cooperation cooperation</p>
+    <div class="div_small_titel"><span class="titel">cooperation</span></div>
+</div>
+<div class="block_seven">
+    <div class="_7_block_titel">
+    </div>
+    <div class="_7_block_left">
+        <span class="text1">Do you have an idea and want to implement it?<br>Leave a request, we will contact you and advise you.</span><br>
+        <br>
+        <span class="text2">Also, we are ready to consider any commercial proposals.</span>
+        <div class="div_img">
+            <img style="width: 100%; color: #fed106;margin-top: 32px " src="images/img_hends.png" />
+        </div>
+    </div>
+    <div class="_7_block_right">
+        <div><input style="background: #232323; color: #fed106;min-height: 44px;box-shadow: none;width: -webkit-fill-available;padding-left: 16px " type="text" class="form-control" id="firstName" placeholder="How can I call you?" value="" required></div>
+        <div class="two_input">
+            <input  class="form-control input_phone" type="text" size="80" placeholder="Phone or mail">
+            <div class="small_inp">
+                <select class="select_inp" required>
+                    <option value="">Call</option>
+                    <option>Telegram</option>
+                    <option>WhatsApp</option>
+                    <option>Email</option>
+                </select></div>
+        </div>
+        <textarea class="input_messqge" placeholder="Message"></textarea>
+        <div style="margin-top: 16px">
+            <div style="width: 100%;height: 44px;background: #fed106;border-radius: 8px">
+                <a href="javascript:PopUpShow()" style="display:block;width: 100%;height: 100%;text-decoration: none;color: black"><div style="text-align: center;padding-top: 10px">Send</div></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p><a id="work"></a></p>
+<div class="block_eight">
+    <div class="block_titel">
+        <p class="bg_titel">work with us work with us work with us</p>
+        <div class="div_small_titel"><span class="titel">work with us</span></div>
+    </div>
+    <div class="blocks_prof_info">
+        <div id="item_work1" class="accordion">
+            <div class="accordion_bl_titel"><span class="accordion_text_titel">Android Developer</span></div>
+            <div class="accordion_tags">
+                <div class="tag_profession"><span class="text_tag">Kotlin</span></div>
+                <div class="tag_profession" style="margin-left: 10px"><span class="text_tag">Rx</span></div>
+                <div class="tag_profession" style="margin-left: 10px"><span class="text_tag">MVI</span></div>
+                <div class="tag_profession" style="margin-left: 10px"><span class="text_tag">MVVM</span></div>
+                <div class="tag_profession" style="margin-left: 10px"><span class="text_tag">Coroutines</span></div>
+                <div class="tag_profession" style="margin-left: 10px"><span class="text_tag">Dagger2</span></div>
+                <div class="tag_profession" style="margin-left: 10px"><span class="text_tag">Clean Architecture</span></div>
+                <div class="tag_profession" style="margin-left: 10px"><span class="text_tag">Git</span></div>
+            </div>
+            <div class="accordion_img"><img id="more_info1" class="more_info_img" src="images/img_more_info_false.svg" ></div>
+        </div>
+        <div id="panel1" class="panel">
+            <span style="color: #fed106;font-size: 18px">In the course of work you will need:</span>
+            <ul style="color: white; font-size: 16px">
+                <li>Solve various and challenging tasks for the project;</li>
+                <li>Interact with our QA, designers, managers, analysts and other team members;</li>
+                <li>Study and implement new technologies with us;</li>
+                <li>Participate in architecture design and process building;</li>
+                <li>Automate the processes of assembly, generation and analysis of code;</li>
+                <li>Participate in code review;</li>
+                <li>Grow and help others grow.</li>
+            </ul>
+            <span style="color: #fed106;font-size: 18px">We expect from you:</span>
+            <ul style="color: white; font-size: 16px">
+                <li>Experience in developing Android applications in Kotlin;</li>
+                <li>Understanding the basic principles of security, working with databases, algorithms and data structures, OOP;</li>
+                <li>Understanding the differences between MVC, MVP and MVVM;</li>
+                <li>Experience with the Git version control system;</li>
+                <li>English at the level of reading technical documentation.</li>
+            </ul>
+            <span style="color: #fed106;font-size: 18px">What do we offer:</span>
+            <ul style="color: white; font-size: 16px">
+                <li>Competitive salary;</li>
+                <li>Registration as self-employed;</li>
+                <li>tea biscuits friendly staff</li>
+                <li>Office work</li>
+            </ul>
+            <div class="btn_in_work">
+                <div style="width: 100%;height: 44px;background: #fed106;border-radius: 8px">
+                    <a href="javascript:PopUpShowWork1(1)" style="display:block;width: 100%;height: 100%;text-decoration: none;color: black"><div style="text-align: center;padding-top: 10px">I want to join the team</div></a>
+                </div>
+            </div>
+
+        </div>
+        <div id="item_work2" class="accordion">
+            <div class="accordion_bl_titel"><span class="accordion_text_titel">iOS Developer</span></div>
+            <div class="accordion_tags">
+                <div class="tag_profession"><span class="text_tag">Swift</span></div>
+                <div class="tag_profession" style="margin-left: 10px"><span class="text_tag">Objective-C</span></div>
+                <div class="tag_profession" style="margin-left: 10px"><span class="text_tag">macOS</span></div>
+                <div class="tag_profession" style="margin-left: 10px"><span class="text_tag">MVVM</span></div>
+                <div class="tag_profession" style="margin-left: 10px"><span class="text_tag">Coroutines</span></div>
+                <div class="tag_profession" style="margin-left: 10px"><span class="text_tag">Dagger2</span></div>
+                <div class="tag_profession" style="margin-left: 10px"><span class="text_tag">Clean Architecture</span></div>
+                <div class="tag_profession" style="margin-left: 10px"><span class="text_tag">Git</span></div>
+            </div>
+            <div class="accordion_img"><img id="more_info2" class="more_info_img" src="images/img_more_info_false.svg" ></div>
+        </div>
+        <div id="panel2" class="panel">
+            <span style="color: #fed106;font-size: 18px">In the course of work you will need:</span>
+            <ul style="color: white; font-size: 16px">
+                <li>Solve various and challenging tasks for the project;</li>
+                <li>Interact with our QA, designers, managers, analysts and other team members;</li>
+                <li>Study and implement new technologies with us;</li>
+                <li>Participate in architecture design and process building;</li>
+                <li>Automate the processes of assembly, generation and analysis of code;</li>
+                <li>Participate in code review;</li>
+                <li>Grow and help others grow.</li>
+            </ul>
+            <span style="color: #fed106;font-size: 18px">We expect from you:</span>
+            <ul style="color: white; font-size: 16px">
+                <li>Experience in developing Android applications in Kotlin;</li>
+                <li>Understanding the basic principles of security, working with databases, algorithms and data structures, OOP;</li>
+                <li>Understanding the differences between MVC, MVP and MVVM;</li>
+                <li>Experience with the Git version control system;</li>
+                <li>English at the level of reading technical documentation.</li>
+            </ul>
+            <span style="color: #fed106;font-size: 18px">What do we offer:</span>
+            <ul style="color: white; font-size: 16px">
+                <li>Competitive salary;</li>
+                <li>Registration as self-employed;</li>
+                <li>tea biscuits friendly staff</li>
+                <li>Office work</li>
+            </ul>
+            <div class="btn_in_work">
+                <div style="width: 100%;height: 44px;background: #fed106;border-radius: 8px">
+                    <a href="javascript:PopUpShowWork1(2)" style="display:block;width: 100%;height: 100%;text-decoration: none;color: black"><div style="text-align: center;padding-top: 10px">I want to join the team</div></a>
+                </div>
+            </div>
+
+        </div>
+        <div id="item_work3" class="accordion">
+
+            <div class="accordion_bl_titel"><span class="accordion_text_titel">Product Designer</span></div>
+            <div class="accordion_tags">
+                <div class="tag_profession"><span class="text_tag">Figma</span></div>
+                <div class="tag_profession" style="margin-left: 10px"><span class="text_tag">Jira/Confluence</span></div>
+                <div class="tag_profession" style="margin-left: 10px"><span class="text_tag">UX-исследования</span></div>
+                <div class="tag_profession" style="margin-left: 10px"><span class="text_tag">Photoshop</span></div>
+                <div class="tag_profession" style="margin-left: 10px"><span class="text_tag">Web</span></div>
+                <div class="tag_profession" style="margin-left: 10px"><span class="text_tag">Mobile</span></div>
+            </div>
+            <div class="accordion_img"><img id="more_info3" class="more_info_img" src="images/img_more_info_false.svg" ></div>
+        </div>
+        <div id="panel3" class="panel">
+            <span style="color: #fed106;font-size: 18px">In the course of work you will need:</span>
+            <ul style="color: white; font-size: 16px">
+                <li>Solve various and challenging tasks for the project;</li>
+                <li>Interact with our QA, designers, managers, analysts and other team members;</li>
+                <li>Study and implement new technologies with us;</li>
+                <li>Participate in architecture design and process building;</li>
+                <li>Automate the processes of assembly, generation and analysis of code;</li>
+                <li>Participate in code review;</li>
+                <li>Grow and help others grow.</li>
+            </ul>
+            <span style="color: #fed106;font-size: 18px">We expect from you:</span>
+            <ul style="color: white; font-size: 16px">
+                <li>Experience in developing Android applications in Kotlin;</li>
+                <li>Understanding the basic principles of security, working with databases, algorithms and data structures, OOP;</li>
+                <li>Understanding the differences between MVC, MVP and MVVM;</li>
+                <li>Experience with the Git version control system;</li>
+                <li>English at the level of reading technical documentation.</li>
+            </ul>
+            <span style="color: #fed106;font-size: 18px">What do we offer:</span>
+            <ul style="color: white; font-size: 16px">
+                <li>Competitive salary;</li>
+                <li>Registration as self-employed;</li>
+                <li>tea biscuits friendly staff</li>
+                <li>Office work</li>
+            </ul>
+            <div class="btn_in_work">
+                <div style="width: 100%;height: 44px;background: #fed106;border-radius: 8px">
+                    <a href="javascript:PopUpShowWork1(3)" style="display:block;width: 100%;height: 100%;text-decoration: none;color: black"><div style="text-align: center;padding-top: 10px">I want to join the team</div></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="block_info">
+        <span class="info" style="font-size: 16px;color: white">Do you want to work with us, but did not find a suitable vacancy?<br>Write a story about yourself to us by mail <span style="color: #fed106">hr@bearscomgames.com</span><br>Do not forget to attach (if available) resume and portfolio.</span>
+    </div>
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var more_info1 = document.getElementById("more_info1");
+        var more_info2 = document.getElementById("more_info2");
+        var more_info3 = document.getElementById("more_info3");
+        var item_work1 = document.getElementById("item_work1");
+        var item_work2 = document.getElementById("item_work2");
+        var item_work3 = document.getElementById("item_work3");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight){
+                    panel.style.maxHeight = null;
+                    if (panel.id==="panel1"){
+                        item_work1.style.borderRadius = "12px"
+                        more_info1.src="images/img_more_info_false.svg";
+                    }else if (panel.id==="panel2"){
+                        item_work2.style.borderRadius = "12px"
+                        more_info2.src="images/img_more_info_false.svg";
+                    }else if (panel.id==="panel3"){
+                        item_work3.style.borderRadius = "12px"
+                        more_info3.src="images/img_more_info_false.svg";
+                    }
+                    console.log( panel.id)
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                    if (panel.id==="panel1"){
+                        item_work1.style.borderRadius = "12px 12px 0 0"
+                        more_info1.src="images/img_more_info_true.svg";
+                    }else if (panel.id==="panel2"){
+                        item_work2.style.borderRadius = "12px 12px 0 0"
+                        more_info2.src="images/img_more_info_true.svg";
+                    }else if (panel.id==="panel3"){
+                        item_work3.style.borderRadius = "12px 12px 0 0"
+                        more_info3.src="images/img_more_info_true.svg";
+                    }
+
+                }
+            });
+        }
+    </script>
+</div>
+
+<div class="block_nine">
+    <div class="_9_block">
+        <div class="text_in_block9">BearsComGames, 2023</div>
+    </div>
+    <div class="_9_block1">
+        <div class="item_site1">
+            <a href="https://vk.com/bearscomgames"></a>
+        </div>
+        <div class="item_site2">
+            <a href="https://www.youtube.com/channel/UCFKlEqnP0rO2Navu6SCQTQw/featured"></a>
+        </div>
+        <div class="item_site3">
+            <a href="https://play.google.com/store/apps/dev?id=7121399721854375389"></a>
+        </div>
+        <div class="item_site5">
+            <a href="https://www.facebook.com/groups/bearscomgames"></a>
+        </div>
+    </div>
+</div>
+
+<div class="b-popup" id="coopPopUp">
+    <div class="b-popup-content">
+        <div class="coopPopUp_block1" >application sent</div>
+        <div class="coopPopUp_block2" >We will review your request and contact you as soon as possible.</div>
+        <div class="coopPopUp_btn_close"><a href="javascript:PopUpHide()"><img style="width: 100%;height: 32px " src="images/close_button.svg" /></a></div>
+        <div class="coopPopUp_btn"><a href="javascript:PopUpHide()" style="height: 100%;width: 100%;text-decoration: none;">
+            <div style="text-align: center;padding-top: 10px;color: black">close</div>
+        </a></div>
+    </div>
+</div>
+
+<div class="b-popup" id="PopUpWork1">
+    <div class="b-popup-content_work1">
+        <div class="PopUpWork1_block1">
+            <div class="PopUpWork1_titel1">job posting</div>
+            <div id="text_job" class="PopUpWork1_titel2">C# developer</div>
+        </div>
+        <div class="PopUpWork1_block2">
+            <input style="background: #171717; color: #fed106;min-height: 44px;font-family: Lato-Regular;width: 100%; " type="text" class="form-control" id="firstName" placeholder="Name" value="" required>
+        </div>
+        <div class="PopUpWork1_block3">
+            <input style="background: #171717; color: #fed106;min-height: 44px;font-family: Lato-Regular;width: 100%; " type="text" class="form-control" id="firstName" placeholder="Age" value="" required>
+        </div>
+        <div class="PopUpWork1_block4">
+            <input style="background: #171717; color: #fed106;min-height: 44px;font-family: Lato-Regular;width: 100%; " type="text" class="form-control" id="firstName" placeholder="Telegram" value="" required>
+        </div>
+        <div class="PopUpWork1_block5">
+            <input style="background: #171717; color: #fed106;min-height: 44px;font-family: Lato-Regular;width: 100%; " type="text" class="form-control" id="firstName" placeholder="What programs do you work with?" value="" required>
+        </div>
+        <div class="PopUpWork1_block6">
+            <select style="background: #171717; color: #ffffff;min-height: 44px;font-family: Lato-Regular;width: 100%; " class="form-select" id="country" required>
+                <option value="">Junior</option>
+                <option>Middle</option>
+                <option>Senior</option>
+            </select>
+        </div>
+        <div class="PopUpWork1_block7">
+            <input style="background: #171717; color: #fed106;min-height: 44px;height: 100%;width: 100%; " type="text" class="form-control" id="firstName" placeholder="Tell us about yourself: how did you study, where did you work, what tasks did you solve?" value="" required>
+        </div>
+
+        <div class="PopUpWork1_block8">
+            <div class="PopUpWork1_block8_1">
+                <input style="background: #171717; color: #fed106;min-height: 44px;font-family: Lato-Regular;width: 100%; " type="text" class="form-control" id="firstName" placeholder="Link to resume" value="" required>
+            </div>
+            <div class="PopUpWork1_block8_2">
+                <input style="background: #171717; color: #fed106;min-height: 44px;font-family: Lato-Regular;width: 100%; " type="text" class="form-control" id="firstName" placeholder="Link to portfolio" value="" required>
+            </div>
+        </div>
+
+        <div class="PopUpWork1_btn_close"><a href="javascript:PopUpHideWork1()"><img style="width: 100%;height: 32px " src="images/close_button.svg" /></a></div>
+
+        <div class="PopUpWork1_btn">
+            <a href="javascript:PopUpShowWork1Send()" style="display:block;width: 100%;height: 100%;text-decoration: none;color: black"><div style="text-align: center;padding-top: 10px">Send</div></a>
+        </div>
+    </div>
+</div>
+
+
+<div class="b-popup" id="PopUpWork2">
+    <div class="b-popup-content_work2">
+        <div class="PopUpWork2_block1">
+            <div class="PopUpWork2_titel1">job posting</div>
+            <div id="text_job_send" class="PopUpWork2_titel2">C# developer</div>
+        </div>
+        <div class="PopUpWork2_btn_close"><a href="javascript:PopUpHideWork2()"><img style="width: 100%;height: 32px " src="images/close_button.svg" /></a></div>
+        <div class="PopUpWork2_block2">
+            <div class="PopUpWork2_block2_text">Response sent.<br>We will contact you shortly.</div>
+        </div>
+        <div class="PopUpWork2_btn">
+            <a href="javascript:PopUpHideWork2()" style="display:block;width: 100%;height: 100%;text-decoration: none;color: black"><div style="text-align: center;padding-top: 10px">Understood</div></a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
